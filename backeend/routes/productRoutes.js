@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router();
 const Topwear = require('../model/topWaer')
 const Book = require('../model/books')
-const upload = require('../middlewares/multer');
+const { books_images, topwear_images } = require('../middlewares/multer');
+
 
 //======================================== these controllers are only for product releated======================== 
 router.get('/',async (req,res)=>{
@@ -18,9 +19,9 @@ if(!Topwearproducts){
         return res.status(500).send("server eoor , unavle to find data")
     }
 })
+//===========================================//this is for product ===================================//
 
-// Add a product to the database
-router.post('/addproduct/topwear', async (req, res) => {
+router.post('/addproduct/topwear', topwear_images.single('image'),async (req, res) => {
     const { 
         name, 
         description, 
@@ -41,6 +42,8 @@ router.post('/addproduct/topwear', async (req, res) => {
             message: "All fields are required",
         });
     }
+    
+    const imagePath = req.file ? req.file.path : null;
 
     try {
         const isDataAdded = await Topwear.create({
@@ -64,12 +67,16 @@ router.post('/addproduct/topwear', async (req, res) => {
                 message: "Failed to add product",
             });
         }
+        else{
+            console.log(isDataAdded)
+            return res.status(201).json({
+                success: true,
+                message: "Entry created successfully",
+                data: isDataAdded
+            });
+        }
+       
 
-        return res.status(201).json({
-            success: true,
-            message: "Entry created successfully",
-            data: isDataAdded
-        });
 
     } catch (err) {
         console.error("Error during product creation:", err);
@@ -81,7 +88,7 @@ router.post('/addproduct/topwear', async (req, res) => {
 });
 
 //===========================================//this is for books===================================//
-router.post('/addproduct/book',upload.single('image'), async (req, res) => {
+router.post('/addproduct/book',books_images.single('image'), async (req, res) => {
     const { 
         name, 
         description, 
@@ -97,6 +104,7 @@ router.post('/addproduct/book',upload.single('image'), async (req, res) => {
         language, 
         isbn 
     } = req.body;
+
 
 
     const imagePath = req.file ? req.file.path : null;
@@ -134,8 +142,9 @@ router.post('/addproduct/book',upload.single('image'), async (req, res) => {
 router.get('/book/:id', async (req, res) => {
     const bookfindid = req.params.id;
     try {
-      const book = await Book.find({ isbn: bookfindid });
-      if (book.length > 0) {
+      const book = await Book.findOne({ isbn: bookfindid });
+      console.log(book);
+      if (book) {
         res.status(200).json(book);
       } else {
         res.status(404).send("Book not found");
