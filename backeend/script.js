@@ -14,7 +14,7 @@ const app = express();
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 try {
-  const connectiondetail = mongoose.connect("mongodb://localhost:27017/rehbarstore");
+  const connectiondetail = mongoose.connect("");
   if (!connectiondetail) {
     console.log("Error while connecting to the server");
   } else {
