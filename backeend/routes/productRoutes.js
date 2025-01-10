@@ -5,6 +5,18 @@ const Book = require('../model/books')
 const { books_images, topwear_images } = require('../middlewares/multer');
 
 
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect('/auth/google');
+  }
+  
+  router.get('/dashboard', ensureAuthenticated, (req, res) => {
+    res.send('Welcome to the dashboard!');
+  });
+  
 //======================================== these controllers are only for product releated======================== 
 router.get('/',async (req,res)=>{
     try{
@@ -139,6 +151,7 @@ router.post('/addproduct/book',books_images.single('image'), async (req, res) =>
     }
 });
 //========================this route id gor finding a book using their isbn number===============================//
+
 router.get('/book/:id', async (req, res) => {
     const bookfindid = req.params.id;
     try {
@@ -154,8 +167,24 @@ router.get('/book/:id', async (req, res) => {
       res.status(500).send("Error fetching book details");
     }
   });
+
+  //========this is for delete a specific post or id
+  
+router.post('/deletebook/:id', async (req, res) => {
+    const bookfindid = req.params.id;
+    try {
+      const book = await Book.findOneAndDelete({ isbn: bookfindid });
+      console.log(book);
+      if (book) {
+        res.status(200).json({ message: 'Book deleted successfully  ',book});
+      } else {
+        res.status(404).send("Book not found");
+      }
+    } catch (error) {
+      console.error("Error fetching book:", error);
+      res.status(500).send("Error fetching book details");
+    }
+  });
   
 
 module.exports = router;
-
-module.exports= router
