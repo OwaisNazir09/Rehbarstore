@@ -1,0 +1,169 @@
+/* Footer.css */
+
+.footer {
+    background-color: #101010;
+    color: #fff;
+    padding: 40px 20px;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .footer-newsletter {
+    text-align: center;
+  }
+  
+  .footer-newsletter h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #FF6F20;
+  }
+  
+  .footer-newsletter form {
+    display: inline-flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .footer-newsletter input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 250px;
+  }
+  
+  .footer-newsletter button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #FF6F20;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .footer-newsletter button:hover {
+    background-color: #FF4D00;
+  }
+  
+  .footer-contact-info {
+    display: flex;
+    flex-wrap: wrap; /* allows wrapping in small screens */
+    gap: 40px;
+    justify-content: space-between;
+  }
+  
+  .footer-contact-info > div {
+    flex: 1;
+    min-width: 200px; /* Ensures they don't get too small on mobile */
+  }
+  
+  .footer-address, .footer-contact, .footer-links, .footer-categories {
+    margin-bottom: 20px;
+  }
+  
+  .footer-address h3,
+  .footer-links h3,
+  .footer-contact h3,
+  .footer-categories h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #FF6F20;
+  }
+  
+  .footer-address p,
+  .footer-contact p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul, .footer-categories ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links ul li, .footer-categories ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul li a, .footer-categories ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .footer-links ul li a:hover, .footer-categories ul li a:hover {
+    color: #FF6F20;
+  }
+  
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 40px;
+  }
+  
+  .footer-bottom p {
+    color: #777;
+  }
+  
+  /* Add responsiveness for smaller screens */
+  @media (max-width: 768px) {
+    .footer-contact-info {
+      flex-direction: column;
+    }
+  
+    .footer-newsletter form {
+      flex-direction: column;
+    }
+  
+    .footer-contact-info > div {
+      width: 100%; /* Stacks them vertically on smaller screens */
+    }
+  
+    .footer-newsletter input {
+      width: 100%;
+    }
+  }
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .footer-section {
+    flex: 1;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-section li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-section a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .footer-section a:hover {
+    color: #0073e6;
+  }
+  

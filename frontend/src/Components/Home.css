@@ -1,0 +1,119 @@
+.home {
+    text-align: center;
+    padding: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: left;
+}
+
+.card-content h2 {
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+}
+
+.card-content p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.card-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.card-button:hover {
+    background: #0056b3;
+}
+/* Styling for the full-screen banner */
+
+    .banner {
+        height: 100vh; /* Full viewport height */
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    
+
+/* Dark overlay for text readability */
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 1;
+}
+
+/* Banner content styling */
+.banner-content {
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.banner-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.banner-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.banner-button {
+    background-color: #ff6347; /* Button color */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.banner-button:hover {
+    background-color: #e5533d;
+}

@@ -1,6 +1,7 @@
 const multer = require('multer');
 const path = require('path');
 
+
 const bookstoreimages = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, '../uploads/books'));
@@ -13,7 +14,7 @@ const bookstoreimages = multer.diskStorage({
 
 const topwearimages = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '../uploads/topwear')); // Fixed typo
+        cb(null, path.join(__dirname, '../uploads/topwearImages')); 
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + file.originalname;
